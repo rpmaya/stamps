@@ -3,7 +3,8 @@ const fs = require('fs');
 const IPFS_DIR = "QmRNZcRWcwP6nARU6whW4dDCKMDjoXsXECEwgUCDYnPDaX";
 const COLLECTION = "01";
 const MAX = 9;
-//const MAXF = 2;
+const ini = 1;
+const fin = ini + MAX - 1;
 
 function dec2hex(n) {
     return Number(n).toString(16).padStart(64, '0');
@@ -23,7 +24,7 @@ function getColumn(n) {
 */
 async function main() {  
 
-    for (var i = 1; i <= MAX; i++) {
+    for (var i = ini; i <= fin; i++) {
 
         const name = "metadata/" + dec2hex(i) + ".json";
 
