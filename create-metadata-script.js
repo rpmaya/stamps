@@ -1,10 +1,9 @@
 const fs = require('fs');
 
 const IPFS_DIR = "QmRNZcRWcwP6nARU6whW4dDCKMDjoXsXECEwgUCDYnPDaX";
-const COLLECTION = "01";
+const COLLECTION = 1;
 const MAX = 9;
-const ini = 1;
-const fin = ini + MAX - 1;
+//const MAXF = 2;
 
 function dec2hex(n) {
     return Number(n).toString(16).padStart(64, '0');
@@ -24,15 +23,20 @@ function getColumn(n) {
 */
 async function main() {  
 
-    for (var i = ini; i <= fin; i++) {
+    for (var i = 1; i <= MAX; i++) {
 
-        const name = "metadata/" + dec2hex(i) + ".json";
+        const name = "metadata/" + dec2hex((COLLECTION-1)*MAX + i) + ".json";
 
         var atts = [
             {
                 "trait_type": "Background",
                 "value": "Blue"
+            },
+            {
+                "colection_type": "Number",
+                "value": COLLECTION
             }
+
         ]
 /*
         if (i === 2) {
