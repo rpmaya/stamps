@@ -1,5 +1,6 @@
 const fs = require('fs');
 
+const IPFS_DIR = "QmRNZcRWcwP6nARU6whW4dDCKMDjoXsXECEwgUCDYnPDaX";
 const COLLECTION = "01";
 const MAX = 9;
 //const MAXF = 2;
@@ -28,7 +29,7 @@ async function main() {
 
         var atts = [
             {
-                "trait_type": "Backgroud",
+                "trait_type": "Background",
                 "value": "Blue"
             }
         ]
@@ -51,8 +52,8 @@ async function main() {
 */
         
         nft = {
-                description: 'Test Collection' + COLLECTION + ' Image: ' + i, 
-                image: 'https://gateway.pinata.cloud/ipfs/QmRNZcRWcwP6nARU6whW4dDCKMDjoXsXECEwgUCDYnPDaX/A' + i + '.JPG',
+                description: 'Test Collection ' + COLLECTION + ' Image: ' + i, 
+                image: 'https://gateway.pinata.cloud/ipfs/' + IPFS_DIR + '/A' + i + '.JPG',
                 name: 'name '+ i + ' colection ' + COLLECTION,
                 attributes: atts
         }
