@@ -1,13 +1,14 @@
-
 const fs = require('fs');
 
-const MAX = 4;
-const MAXF = 2;
+const COLLECTION = "01";
+const MAX = 9;
+//const MAXF = 2;
 
 function dec2hex(n) {
     return Number(n).toString(16).padStart(64, '0');
 }
 
+/*
 function getFile(n) {
     var x = n % MAXF;
     if (x === 0) x = MAXF;
@@ -18,7 +19,7 @@ function getColumn(n) {
     var y = Math.ceil(n / MAXF);
     return y;
 }
-
+*/
 async function main() {  
 
     for (var i = 1; i <= MAX; i++) {
@@ -27,15 +28,11 @@ async function main() {
 
         var atts = [
             {
-                "trait_type": "Eyes",
+                "trait_type": "Backgroud",
                 "value": "Blue"
-            },
-            {
-                "trait_type": "Mouth",
-                "value": "Surprise"
             }
         ]
-
+/*
         if (i === 2) {
             const att = {"trait_type":"Noise", "value":"small"};
             atts.push(att);
@@ -51,12 +48,12 @@ async function main() {
         const attC = {"pos_type": "Column", "value": getColumn(i)};
         atts.push(attF);
         atts.push(attC);
-
+*/
         
         nft = {
-                description: 'Test '+ i, 
-                image: 'https://domain/' + i + '.jpg',
-                name: 'name '+ i,
+                description: 'Test Collection' + COLLECTION + ' Image: ' + i, 
+                image: 'https://gateway.pinata.cloud/ipfs/QmRNZcRWcwP6nARU6whW4dDCKMDjoXsXECEwgUCDYnPDaX/A' + i + '.JPG',
+                name: 'name '+ i + ' colection ' + COLLECTION,
                 attributes: atts
         }
 
