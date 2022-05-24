@@ -31,7 +31,7 @@ async function main() {
 
    const contractNFT = Stamps.attach(CONTRACT_ADDRESS);
   
- 
+ /*
    let NFT_IDs = [];
    let NFT_Amounts = []; 
    for (let i=1; i<=144; i++) {
@@ -43,7 +43,9 @@ async function main() {
    console.log("NFTs are minting");
    await tx.wait();
    console.log("NFTs are minted");
-
+*/
+   const tx = await contractNFT.setURI("https://gateway.pinata.cloud/ipfs/QmZUuQ1oabmCY4w1o4iiViKfgrvHptUsheftLWbnmYc4C4/{id}.json");
+   await tx.wait();
 }
 
 // We recommend this pattern to be able to use async/await everywhere
