@@ -30,6 +30,8 @@ async function main() {
         let backgroundColor;
         let headColor;
         let letter = "A";
+        let num = i % 9;
+        if (num == 0) num = 9;
 
         if (i > 0 && i <= 9) {
             backgroundColor = "blue light";
@@ -101,7 +103,7 @@ async function main() {
             },
             {
                 "alfanum_type": "Number",
-                "value": i % 9
+                "value": num.toString()
             }
         ]
 
