@@ -37,7 +37,7 @@ async function main() {
             backgroundColor = "blue light";
             headColor = "white";
         } else if (i > 9 && i <= 18) {
-            backgroundColor = "strong Pink";
+            backgroundColor = "strong pink";
             headColor = "red dark";
         } else if (i > 18 && i <= 27) {
             backgroundColor = 'lila';
@@ -82,12 +82,7 @@ async function main() {
             backgroundColor = 'blueberry';
             headColor = 'blue orange';
         }
-/*
-        const attF = { "pos_type": "File", "value": getFile(i) };
-        const attC = { "pos_type": "Column", "value": getColumn(i) };
-        atts.push(attF);
-        atts.push(attC);
-*/
+
         var atts = [
             {
                 "color_type": "Background",
