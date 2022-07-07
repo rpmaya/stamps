@@ -2,37 +2,48 @@ const { ethers } = require("hardhat");
 
 async function main() {
 
+
     const [deployer] = await ethers.getSigners();
-
-    console.log("Deploying contracts with the account:", deployer.address);
-
-    let txHash, txReceipt;
+    //console.log("Deploying contracts with the account:", deployer.address);
+    //let txHash, txReceipt;
     const Collection = await ethers.getContractFactory("StampCollection");
 
-     /* Deploy Collections 721 Contract */
-     const collection = await Collection.deploy(nftContractAddress, sogaContractAddress);
+     /* Deploy Collections 721 Contract  */
+     const collection = await Collection.deploy();
      await collection.deployed()
      txHash = collection.deployTransaction.hash;
      txReceipt = await ethers.provider.waitForTransaction(txHash);
      let collectionContractAddress = txReceipt.contractAddress;
-     console.log("Soga Licenses deployed to:", collectionContractAddress);
- 
+     console.log("Soga Collection deployed to:", collectionContractAddress);
+    
+
      const collectionAddress = collectionContractAddress;
- 
-     /* Mint licenses */
+     //const collectionAddress = '0x77dFFFBE961D8bD7e50Ba33C0f474A24D1Ca8e93';
      const contractCollection = Collection.attach(collectionAddress);
-     const uri = "/";
-     const maxNFT = 5;
-     for (let i = 0; i < maxNFT; i++) {
+
+     /* Mint licenses  */
+     const CID = "QmdGSJC8xK32YE5V3ie78Pkbpk5eu29JqEyZCgV8gPaSEF";
+     const maxNFT = 16;
+
+     for (let i = 1; i <= maxNFT; i++) {
+        uri = CID + "/" + i + ".json";
         const txm = await contractCollection.safeMint(deployer.address, uri);
         await txm.wait();
-        console.log("Collection", i, "minted");
+        console.log("Collection", uri, "minted");
      }
+    
+     /* Testing
+     const id = 0;
+     let url = await contractCollection.tokenURI(id);
+     console.log("URL 0:", url);
 
-     /* Testing */
-     const id = 1;
-     const url = await contractCollection.tokenURI(id);
-     console.log("URL 1:", url);
+     const new_url = "QmdGSJC8xK32YE5V3ie78Pkbpk5eu29JqEyZCgV8gPaSEF/0000000000000000000000000000000000000000000000000000000000000001.json"
+     const txsu = await contractCollection.setTokenURI(0, new_url);
+     await txsu.wait();
+
+     url = await contractCollection.tokenURI(id);
+     console.log("New URL 0:", url);
+      */
 }
 
 main()
