@@ -1,69 +1,91 @@
 const fs = require('fs');
 
-const CID = "QmcTrRsvDm18qbrgodXAcrbQktWtA7eiYtixBaz42ovpWY";
+const CID = "QmPFWex5TSXFgWRkHPEVBBDP4t9jLxRJ6DcwjHiq1NoyHF";
 
-const MAX = 16;
+const MAX = 18;
 
 async function main() {
 
     for (var i = 1; i <= MAX; i++) {
 
-        const name = "metadata/" + i + ".json";
+        const name = "metadata721/" + i + ".json";
 
         let backgroundColor;
-        let headColor;
-        let letter = "A";
-        let num = i % 9;
-        if (num == 0) num = 9;
+        let crownColor;
+        let images;
 
-        if (i > 0 && i <= 9) {
-            backgroundColor = "blue light";
-            headColor = "white";
-        } else if (i > 9 && i <= 18) {
+        if (i == 1) {
+            backgroundColor = "black red purple";
+            crownColor = "white";
+            images = 240;
+        } else if (i == 2) {
+            backgroundColor = "white pink purple";
+            crownColor = "white blue";
+            images = 240;
+        } else if (i == 3) {
+            backgroundColor = "sky soft-pink-blue";
+            crownColor = "fluo pink";
+            images = 240;
+        } else if (i == 4) {
+            backgroundColor = "sky soft-pink-blue";
+            crownColor = "fluo pink";
+            images = 128;
+        } else if (i == 5) {
+            backgroundColor = "sky black";
+            crownColor = "turquoise";
+            images = 203;
+        } else if (i == 6) {
+            backgroundColor = "sky black-yellow";
+            crownColor = "ligth yellow";
+            images = 240;
+        } else if (i == 7) {
+            backgroundColor = "sky black-yellow";
+            crownColor = "ligth yellow";
+            images = 82;
+        } else if (i == 8) {
+            backgroundColor = "sky black-blue";
+            crownColor = "strong red";
+            images = 240;
+        } else if (i == 9) {
+            backgroundColor = "sky black-blue";
+            crownColor = "strong red";
+            images = 174;
+        } else if (i == 10) {
+            backgroundColor = "sky black-grey";
+            crownColor = "grey";
+            images = 240;
+        } else if (i == 11) {
+            backgroundColor = "sky black-grey";
+            crownColor = "grey";
+            images = 197;
+        } else if (i == 12) {
+            backgroundColor = "orange purple";
+            crownColor = "strong green";
+            images = 240;
+        } else if (i == 13) {
+            backgroundColor = "orange purple";
+            crownColor = "strong green";
+            images = 151;
+        } else if (i == 14) {
+            backgroundColor = "sky blue-turquoise";
+            crownColor = "strong yellow";
+            images = 240;
+        } else if (i == 15) {
+            backgroundColor = "sky blue-turquoise";
+            crownColor = "strong yellow";
+            images = 105;
+        } else if (i == 16) {
             backgroundColor = "strong pink";
-            headColor = "red dark";
-        } else if (i > 18 && i <= 27) {
-            backgroundColor = 'lila';
-            headColor = 'strong lila';
-        } else if (i > 28 && i <= 36) {
-            backgroundColor = 'soft red';
-            headColor = 'green-yellow';
-        } else if (i > 36 && i <= 45) {
-            backgroundColor = 'orange';
-            headColor = 'lila-yellow';
-        } else if (i > 45 && i <= 54) {
-            backgroundColor = 'deep blue';
-            headColor = 'dark pink';
-        } else if (i > 55 && i <= 63) {
-            backgroundColor = 'pop pink';
-            headColor = 'soft pink-yellow';
-        }else if (i > 63 && i <= 72) {
-            backgroundColor = 'yellow';
-            headColor = 'blue-yellow';
-        } else if (i > 72 && i <= 81) {
-            backgroundColor = 'blue sky';
-            headColor = 'yellow-pink';
-        } else if (i > 81 && i <= 90) {
-            backgroundColor = 'blue';
-            headColor = 'red';
-        } else if (i > 90 && i <= 99) {
-            backgroundColor = 'light orange';
-            headColor = 'red blue';
-        } else if (i > 99 && i <= 108) {
-            backgroundColor = 'strong red';
-            headColor = 'black white';
-        } else if (i > 108 && i <= 117) {
-            backgroundColor = 'light green';
-            headColor = 'soft orange';
-        } else if (i > 117 && i <= 126) {
-            backgroundColor = 'green pond';
-            headColor = 'strawberry pink';
-        } else if (i > 126 && i <= 135) {
-            backgroundColor = 'yellow green';
-            headColor = 'red green';
-        } else if (i > 135 && i <= 144) {
-            backgroundColor = 'blueberry';
-            headColor = 'blue orange';
+            crownColor = "cyan";
+            num = 184;
+        } else if (i == 17) {
+            backgroundColor = "deep blue";
+            crownColor = "lilac white";
+            num = 92;
+        } else if (i == 18) {
+            backgroundColor = "lilac blue";
+            crownColor = "white cyan";
+            num = 8;
         }
 
         var atts = [
@@ -72,26 +94,21 @@ async function main() {
                 "value": backgroundColor
             },
             {
-                "color_type": "Head",
-                "value": headColor
+                "color_type": "Crown",
+                "value": crownColor
             },
             {
-                "alfanum_type": "Letter",
-                "value": letter
-            },
-            {
-                "alfanum_type": "Number",
-                "value": num.toString()
+                "num_type": "NumberOfImages",
+                "value": images
             }
         ]
 
         let nft = {
-            description: 'Proof Collection Image: ' + i,
+            description: 'Tavole Collection Image ' + i,
             image: 'https://gateway.pinata.cloud/ipfs/' + CID + '/' + i + '.jpg',
-            name: 'Proof ' + i,
+            name: 'Tavole Collection ' + i,
             attributes: atts
         }
-
 
         const data = JSON.stringify(nft, null, 4);
 
