@@ -11,10 +11,10 @@ contract StampCollection is ERC721, ERC721URIStorage, Ownable {
 
     Counters.Counter private _tokenIdCounter;
 
-    constructor() ERC721("MyToken", "MTK") {}
+    constructor() ERC721("Stamps Collection", "SCL") {}
 
     function _baseURI() internal pure override returns (string memory) {
-        return "https://base.com/";
+        return "https://gateway.pinata.cloud/ipfs/";
     }
 
     function safeMint(address to, string memory uri) public onlyOwner {
