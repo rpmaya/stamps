@@ -22,7 +22,7 @@ async function main() {
      const contractCollection = Collection.attach(collectionAddress);
 
      /* Mint licenses  */
-     const CID = "QmdGSJC8xK32YE5V3ie78Pkbpk5eu29JqEyZCgV8gPaSEF";
+     const CID = "QmeTg3YCRUBBeJqJKSjyqAcsEYDhQ4SuRaFxa3n7h7Qgt4";
      const maxNFT = 16;
 
      for (let i = 1; i <= maxNFT; i++) {
