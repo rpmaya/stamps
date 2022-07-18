@@ -6,7 +6,7 @@
 - Run:
 ```shell
 npx hardhat run scripts/deploy-collections-script.js --network ethereum
-# Copy the <address> of the contract from output
+# Copy the <address> of the contract from stdout
 npx hardhat verify --contract "contracts/Collections.sol:CryptoPennyBlack" --network ethereum <address>
 ```
 - Check it out at https://etherscan.io/ searching by contract address
