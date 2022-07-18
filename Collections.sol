@@ -6,12 +6,12 @@ import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
 
-contract StampCollection is ERC721, ERC721URIStorage, Ownable {
+contract CryptoPennyBlack is ERC721, ERC721URIStorage, Ownable {
     using Counters for Counters.Counter;
 
     Counters.Counter private _tokenIdCounter;
 
-    constructor() ERC721("Stamps Collection", "SCL") {}
+    constructor() ERC721("Crypto Penny Black", "CPB") {}
 
     function _baseURI() internal pure override returns (string memory) {
         return "https://gateway.pinata.cloud/ipfs/";
@@ -22,6 +22,13 @@ contract StampCollection is ERC721, ERC721URIStorage, Ownable {
         _tokenIdCounter.increment();
         _safeMint(to, tokenId);
         _setTokenURI(tokenId, uri);
+    }
+
+    function mint(uint256 quantity, string memory cid) public onlyOwner {
+        for (uint256 i = 1; i <= quantity; i++) {
+            string memory uri = string(abi.encodePacked(cid, "/", Strings.toString(i), ".json"));
+            safeMint(msg.sender, uri);
+        }
     }
 
     // The following functions are overrides required by Solidity.
