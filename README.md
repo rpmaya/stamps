@@ -1,5 +1,6 @@
 # Crypto Penny Black
-
+## Ethereum ERC-721 
+- Set Collections.sol and deploy-collections-script.js
 - Set .env with PRIVATE_KEY and ETHEREUM_API_KEY
 - Set hardhat.config.js with etherscan:apiKey
 - Run
