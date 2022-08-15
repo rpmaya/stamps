@@ -12,7 +12,7 @@ async function main() {
         const table = "1A";
         let backgroundColor = "black-red-purple";
         let crownColor = "white";
-        let special = "false";
+        let special = false;
         let specialType = "NA";
 
         if (i == 5) {
@@ -79,7 +79,7 @@ async function main() {
         ]
 
         let nft = {
-            name: 'Image' + i,
+            name: 'Image ' + i,
             description: 'Tavole ' + table,
             image: 'https://gateway.pinata.cloud/ipfs/' + CID + '/' + i + '.jpg',
             attributes: atts
