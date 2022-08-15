@@ -57,42 +57,42 @@ async function main() {
         } else if (i == 57) {
             special = true;
             specialType = "Effigy Looking Right ";
-       
 
-        var atts = [
-            {
-                "color_type": "Background",
-                "value": backgroundColor
-            },
-            {
-                "color_type": "Crown",
-                "value": crownColor
-            },
-            {
-                "special_type": "IsSpecial",
-                "value": special
-            },
-            {
-                "special_type": "Type",
-                "value": specialType
+
+            var atts = [
+                {
+                    "color_type": "Background",
+                    "value": backgroundColor
+                },
+                {
+                    "color_type": "Crown",
+                    "value": crownColor
+                },
+                {
+                    "special_type": "IsSpecial",
+                    "value": special
+                },
+                {
+                    "special_type": "Type",
+                    "value": specialType
+                }
+            ]
+
+            let nft = {
+                name: 'Image' + i,
+                description: 'Tavole ' + table,
+                image: 'https://gateway.pinata.cloud/ipfs/' + CID + '/' + i + '.jpg',
+                attributes: atts
             }
 
-        ]
+            const data = JSON.stringify(nft, null, 4);
 
-        let nft = {
-            name: 'Image' + i,
-            description: 'Tavole ' + table,
-            image: 'https://gateway.pinata.cloud/ipfs/' + CID + '/' + i + '.jpg',
-            attributes: atts
-        }
-
-        const data = JSON.stringify(nft, null, 4);
-
-        try {
-            fs.writeFileSync(name, data);
-            console.log("JSON NFT", i, "saved.");
-        } catch (error) {
-            console.error(error);
+            try {
+                fs.writeFileSync(name, data);
+                console.log("JSON NFT", i, "saved.");
+            } catch (error) {
+                console.error(error);
+            }
         }
     }
 }
