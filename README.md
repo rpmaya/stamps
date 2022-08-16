@@ -14,5 +14,5 @@ npx hardhat verify --contract "contracts/Collections.sol:CryptoPennyBlack" --net
 - Create metadata and mint NFTs (first, set CID from pinata):
 ```shell
 npx hardhat run .\scripts\create-metadata721partial.js
-npx hardhat run .\scripts\deploy-collections721-script.js --network ethereum
+npx hardhat run .\scripts\deploy-collections-script.js --network ethereum
 ```
