@@ -24,8 +24,11 @@ async function main() {
      const collection = Collection.attach(collectionAddress);
 
      /* Mint licenses  */ 
-    const tx = await collection.mint(max, CID);
-    await tx.wait();
+    //const tx = await collection.mint(max, CID);
+    //await tx.wait();
+    
+    const uri = CID + "/1.json";
+    const tx = await collection.safeMint(deployer.address, uri);
     console.log("done");
 
   /*   
