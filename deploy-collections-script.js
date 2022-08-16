@@ -24,18 +24,15 @@ async function main() {
      const collection = Collection.attach(collectionAddress);
 
      /* Mint licenses  */ 
-    const owner = await collection.ownerOf(2);
-    console.log("Owner of ", 2, ": ", owner);
+    const owner = await collection.ownerOf(3);
+    console.log("Owner of ", 3, ": ", owner);
     
-    /*
-    for (let i = 3; i <= 60; i++) {
-        let uri = CID + "/" + i.toString() + ".json";
-        let tx = await collection.safeMint(deployer.address, uri);
-        console.log(tx);
-        await tx.wait();
-        console.log(i, " done!");
-    }
-    */
+    let uri = CID + "/" + (4).toString() + ".json";
+    let tx = await collection.safeMint(deployer.address, uri);
+    await tx.wait();
+    console.log(i, " done!");
+    
+   
   /*   
      for (let i = 60; i <= 120; i++) {
         const tx = await collection.setTokenURI(i, CID + "/" + (i-1).toString() + ".json");
