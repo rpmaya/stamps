@@ -2,7 +2,7 @@ const { ethers } = require("hardhat");
 
 async function main() {
 
-    const max = 60;
+    const max = 240;
     const CID = "QmPFWex5TSXFgWRkHPEVBBDP4t9jLxRJ6DcwjHiq1NoyHF";
 
     const [deployer] = await ethers.getSigners();
@@ -19,25 +19,27 @@ async function main() {
      console.log("Crypto Penny Black deployed to:", collectionContractAddress);
     */
      //const collectionAddress = collectionContractAddress;
-     const collectionAddress = "0x6E9d756b3e63b149107cC31dd637846Bd21DBc96"; //Rinkeby
-     //const collectionAddress = "0x976d70f29856679FAd867f700A350Ae701A3b14a"; //Ethereum
+     //const collectionAddress = "0x6E9d756b3e63b149107cC31dd637846Bd21DBc96"; //Rinkeby
+     const collectionAddress = "0x976d70f29856679FAd867f700A350Ae701A3b14a"; //Ethereum
      const collection = Collection.attach(collectionAddress);
 
+     let num = 61;
+     let uri = CID + "/" + num.toString() + ".json";
+     let tx = await collection.safeMint(deployer.address, uri);
+     await tx.wait();
+     console.log(num, " done!");
 
-     const owner = await collection.ownerOf(2);
-     console.log("Owner of ", 2, ": ", owner);
-     /* Mint licenses  */ 
-    //const tx = await collection.mint(max, CID);
-    //await tx.wait();
-    //console.log("done");
-    for (let i = 3; i <= 60; i++) {
+     const owner = await collection.ownerOf(num);
+     console.log("Owner of ", num, ": ", owner);
+    
+/*
+    for (let i = 61; i <= max; i++) {
         let uri = CID + "/" + i.toString() + ".json";
         let tx = await collection.safeMint(deployer.address, uri);
-        console.log(tx);
         await tx.wait();
         console.log(i, " done!");
     }
-
+*/
   /*   
      for (let i = 60; i <= 120; i++) {
         const tx = await collection.setTokenURI(i, CID + "/" + (i-1).toString() + ".json");
