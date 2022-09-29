@@ -1,9 +1,9 @@
 const { ethers } = require("hardhat");
 
 async function main() {
-
-    const max = 240;
+    let num = 61;
     const CID = "QmPFWex5TSXFgWRkHPEVBBDP4t9jLxRJ6DcwjHiq1NoyHF";
+    const max = 240;
 
     const [deployer] = await ethers.getSigners();
     console.log("Deploying contracts with the account:", deployer.address);
@@ -23,7 +23,6 @@ async function main() {
      const collectionAddress = "0x976d70f29856679FAd867f700A350Ae701A3b14a"; //Ethereum
      const collection = Collection.attach(collectionAddress);
 
-     let num = 61;
      let uri = CID + "/" + num.toString() + ".json";
      let tx = await collection.safeMint(deployer.address, uri);
      await tx.wait();
