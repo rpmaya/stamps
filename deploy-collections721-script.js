@@ -1,8 +1,10 @@
 const { ethers } = require("hardhat");
 
 async function main() {
-    let num = 61;
+    
+    let num = 1;
     const CID = "QmPFWex5TSXFgWRkHPEVBBDP4t9jLxRJ6DcwjHiq1NoyHF";
+    const newCID = "";
     const max = 240;
 
     const [deployer] = await ethers.getSigners();
@@ -23,13 +25,15 @@ async function main() {
      const collectionAddress = "0x976d70f29856679FAd867f700A350Ae701A3b14a"; //Ethereum
      const collection = Collection.attach(collectionAddress);
 
-     let uri = CID + "/" + num.toString() + ".json";
-     let tx = await collection.safeMint(deployer.address, uri);
+     let uri = newCID + "/" + num.toString() + ".json";
+     let newUri = newCID + "/" + num.toString() + ".json";
+     let tx = await collection.setTokenURI(num, newUri);
+     //let tx = await collection.safeMint(deployer.address, uri);
      await tx.wait();
      console.log(num, " done!");
 
-     const owner = await collection.ownerOf(num);
-     console.log("Owner of ", num, ": ", owner);
+     //const owner = await collection.ownerOf(num);
+     //console.log("Owner of ", num, ": ", owner);
     
 /*
     for (let i = 61; i <= max; i++) {
