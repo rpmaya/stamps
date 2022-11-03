@@ -2,111 +2,63 @@ const fs = require('fs');
 
 const CID = "QmPFWex5TSXFgWRkHPEVBBDP4t9jLxRJ6DcwjHiq1NoyHF";
 
-const MAX = 18;
+const MAX = 240;
 
 async function main() {
 
     for (var i = 1; i <= MAX; i++) {
 
-        const name = "metadata721/" + i + ".json";
+        const name = "metadata/" + i + ".json";
+        const table = "1A";
+        let backgroundColor = "black-red-purple";
+        let crownColor = "white";
+        let special = false;
+        let specialType = "NA";
 
-        let backgroundColor;
-        let crownColor;
-        let images;
+        if (i == 5 || i == 10 || i == 28 || i == 54 || i == 68 || i == 129 || i == 148 || i == 153 || i == 161 || i == 168 || i == 228 || i == 229) {
+            special = true;
+            specialType = "Crown Moved";
 
-        if (i == 1) {
-            backgroundColor = "black red purple";
-            crownColor = "white";
-            images = 240;
-        } else if (i == 2) {
-            backgroundColor = "white pink purple";
-            crownColor = "white blue";
-            images = 240;
-        } else if (i == 3) {
-            backgroundColor = "sky soft-pink-blue";
-            crownColor = "fluo pink";
-            images = 240;
-        } else if (i == 4) {
-            backgroundColor = "sky soft-pink-blue";
-            crownColor = "fluo pink";
-            images = 128;
-        } else if (i == 5) {
-            backgroundColor = "sky black";
-            crownColor = "turquoise";
-            images = 203;
-        } else if (i == 6) {
-            backgroundColor = "sky black-yellow";
-            crownColor = "ligth yellow";
-            images = 240;
-        } else if (i == 7) {
-            backgroundColor = "sky black-yellow";
-            crownColor = "ligth yellow";
-            images = 82;
-        } else if (i == 8) {
-            backgroundColor = "sky black-blue";
-            crownColor = "strong red";
-            images = 240;
-        } else if (i == 9) {
-            backgroundColor = "sky black-blue";
-            crownColor = "strong red";
-            images = 174;
-        } else if (i == 10) {
-            backgroundColor = "sky black-grey";
-            crownColor = "grey";
-            images = 240;
-        } else if (i == 11) {
-            backgroundColor = "sky black-grey";
-            crownColor = "grey";
-            images = 197;
-        } else if (i == 12) {
-            backgroundColor = "orange purple";
-            crownColor = "strong green";
-            images = 240;
-        } else if (i == 13) {
-            backgroundColor = "orange purple";
-            crownColor = "strong green";
-            images = 151;
-        } else if (i == 14) {
-            backgroundColor = "sky blue-turquoise";
-            crownColor = "strong yellow";
-            images = 240;
-        } else if (i == 15) {
-            backgroundColor = "sky blue-turquoise";
-            crownColor = "strong yellow";
-            images = 105;
-        } else if (i == 16) {
-            backgroundColor = "strong pink";
-            crownColor = "cyan";
-            num = 184;
-        } else if (i == 17) {
-            backgroundColor = "deep blue";
-            crownColor = "lilac white";
-            num = 92;
-        } else if (i == 18) {
-            backgroundColor = "lilac blue";
-            crownColor = "white cyan";
-            num = 8;
+        } else if (i == 18 || i == 26 || i == 27 || i == 47 || i == 145 || i == 163 || i == 184 || i == 207 || i == 225) {
+            special = true;
+            specialType = "Crown at the Neck";
+
+        } else if (i == 23 || i == 29 || i == 40 || i == 41 || i == 90 || i == 146 || i == 155 || i == 232) {
+            special = true;
+            specialType = "Crown in the Hair";
+
+        } else if (i == 32 || i == 57 || i == 119 || i == 179 || i == 230) {
+            special = true;
+            specialType = "Effigy Looking Right ";
+
+        } else if (i == 76 || i == 77 || i == 215) {
+            special = true;
+            specialType = "Missing Effigy";
         }
 
         var atts = [
             {
-                "color_type": "Background",
+                "trait_type": "Background color",
                 "value": backgroundColor
             },
             {
-                "color_type": "Crown",
+                "trait_type": "Crown color",
                 "value": crownColor
             },
             {
-                "num_type": "NumberOfImages",
-                "value": images
+                "trait_type": "Is Special",
+                "value": special
+            },
+            {
+                "trait_type": "Special type",
+                "value": specialType
             }
         ]
 
         let nft = {
-            description: 'Tavole Collection Image ' + i,
+            name: 'CryptPennyBlack ' + i,
+            description: 'Collection0 ' + table,
             image: 'https://gateway.pinata.cloud/ipfs/' + CID + '/' + i + '.jpg',
-            name: 'Tavole Collection ' + i,
             attributes: atts
         }
 
